@@ -1,15 +1,14 @@
 package lv.st.sbogdano.popularmoviesmvp.movies;
 
-import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.view.MenuItem;
 
 import lv.st.sbogdano.popularmoviesmvp.R;
+import lv.st.sbogdano.popularmoviesmvp.util.ActivityUtils;
 
 public class MoviesActivity extends AppCompatActivity {
 
@@ -37,6 +36,15 @@ public class MoviesActivity extends AppCompatActivity {
         NavigationView navigationView = findViewById(R.id.nav_view);
         if (navigationView != null) {
             setupDrawerContent(navigationView);
+        }
+
+        MoviesFragment moviesFragment =
+                (MoviesFragment) getSupportFragmentManager().findFragmentById(R.id.contentFrame);
+        if (moviesFragment == null) {
+            // Create the fragment
+            moviesFragment = MoviesFragment.newInstance();
+            ActivityUtils.addFragmentToActivity(
+                    getSupportFragmentManager(), moviesFragment, R.id.contentFrame);
         }
 
     }
