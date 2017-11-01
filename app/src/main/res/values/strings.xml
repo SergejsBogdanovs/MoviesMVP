@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">MoviesMVP</string>
+    <string name="navigation_view_header_title">Movies</string>
+    <string name="list_title">Popular Movies</string>
+    <string name="statistics_title">Top Rated Movies</string>
+</resources>

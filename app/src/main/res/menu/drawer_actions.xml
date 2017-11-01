@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/popular_movies_navigation_menu_item"
+        android:icon="@drawable/emoticon_cool"
+        android:title="@string/list_title" />
+    <item
+        android:id="@+id/top_rated_movies_navigation_menu_item"
+        android:icon="@drawable/star_circle"
+        android:title="@string/statistics_title" />
+</menu>
