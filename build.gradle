@@ -45,5 +45,6 @@ ext {
     rulesVersion = '0.5'
     espressoVersion = '3.0.1'
     constraintLayoutVersion  = '1.0.2'
+    butterKnifeVersion = '8.8.1'
 }
 
