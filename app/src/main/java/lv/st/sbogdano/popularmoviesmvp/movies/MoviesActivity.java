@@ -1,11 +1,13 @@
 package lv.st.sbogdano.popularmoviesmvp.movies;
 
 import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -56,7 +58,29 @@ public class MoviesActivity extends AppCompatActivity {
                 Injection.provideMoviesRepository(getApplicationContext()),
                 moviesFragment);
 
+        // Load previously saved state, if available.
+        if (savedInstanceState != null) {
+            MoviesSortingType currentSorting =
+                    (MoviesSortingType) savedInstanceState.getSerializable(CURRENT_SORTING_KEY);
+            mMoviesPresenter.setSorting(currentSorting);
+        }
+    }
 
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        outState.putSerializable(CURRENT_SORTING_KEY, mMoviesPresenter.getSorting());
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                // Open the navigation drawer when the home icon is selected from the toolbar.
+                mDrawerLayout.openDrawer(GravityCompat.START);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void setupDrawerContent(NavigationView navigationView) {
