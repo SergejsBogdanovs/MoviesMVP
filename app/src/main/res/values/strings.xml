@@ -3,4 +3,6 @@
     <string name="navigation_view_header_title">Movies</string>
     <string name="list_title">Popular Movies</string>
     <string name="statistics_title">Top Rated Movies</string>
+    <string name="no_movies_text">Cannot load movies! Check internet connection</string>
+    <string name="no_movies_icon_cd">No movies icon</string>
 </resources>
