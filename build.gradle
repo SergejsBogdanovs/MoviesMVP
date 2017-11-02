@@ -46,5 +46,7 @@ ext {
     espressoVersion = '3.0.1'
     constraintLayoutVersion  = '1.0.2'
     butterKnifeVersion = '8.8.1'
+    retrofitVersion = '2.3.0'
+    okhttpVersion = '3.9.0'
 }
 

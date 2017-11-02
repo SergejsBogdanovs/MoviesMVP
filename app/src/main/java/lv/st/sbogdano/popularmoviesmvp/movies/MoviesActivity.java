@@ -7,14 +7,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import lv.st.sbogdano.popularmoviesmvp.R;
 import lv.st.sbogdano.popularmoviesmvp.util.ActivityUtils;
+import lv.st.sbogdano.popularmoviesmvp.util.Injection;
 
 public class MoviesActivity extends AppCompatActivity {
 
     private static final String CURRENT_SORTING_KEY = "CURRENT_SORTING_KEY";
 
-    private DrawerLayout mDrawerLayout;
+    @BindView(R.id.drawer_layout)
+    DrawerLayout mDrawerLayout;
 
     private MoviesPresenter mMoviesPresenter;
 
@@ -22,6 +26,7 @@ public class MoviesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movies);
+        ButterKnife.bind(this);
 
         // Set up the toolbar
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -31,7 +36,6 @@ public class MoviesActivity extends AppCompatActivity {
         ab.setDisplayHomeAsUpEnabled(true);
 
         // Set up the navigation drawer
-        mDrawerLayout = findViewById(R.id.drawer_layout);
         mDrawerLayout.setStatusBarBackground(R.color.colorPrimaryDark);
         NavigationView navigationView = findViewById(R.id.nav_view);
         if (navigationView != null) {
@@ -46,6 +50,12 @@ public class MoviesActivity extends AppCompatActivity {
             ActivityUtils.addFragmentToActivity(
                     getSupportFragmentManager(), moviesFragment, R.id.contentFrame);
         }
+
+        // Create the presenter
+        mMoviesPresenter = new MoviesPresenter(
+                Injection.provideMoviesRepository(getApplicationContext()),
+                moviesFragment);
+
 
     }
 
