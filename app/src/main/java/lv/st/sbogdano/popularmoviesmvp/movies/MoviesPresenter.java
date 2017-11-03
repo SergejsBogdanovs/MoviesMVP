@@ -21,7 +21,7 @@ public class MoviesPresenter implements MoviesContract.Presenter{
 
     private boolean mFirstLoad = true;
 
-    public MoviesPresenter(@NonNull MoviesRepository moviesRepository, @NonNull MoviesContract.View moviesView) {
+    private MoviesPresenter(@NonNull MoviesRepository moviesRepository, @NonNull MoviesContract.View moviesView) {
         mMoviesRepository = checkNotNull(moviesRepository, "moviesRepository cannot be null");
         mMoviesView = checkNotNull(moviesView, "moviesView cannot be null!");
         mMoviesView.setPresenter(this);
@@ -34,8 +34,24 @@ public class MoviesPresenter implements MoviesContract.Presenter{
 
     @Override
     public void loadMovies(boolean forceUpdate) {
-
+        // Simplification for sample: a network reload will be forced on firs load.
+        loadMovies(forceUpdate || mFirstLoad, true);
+        mFirstLoad = false;
     }
+
+    /**
+     * @param forceUpdate Pass in true to refresh the data in the {@link MoviesRepository}.
+     * @param showLoadingUi Pass in true to display the loading icon in the UI.
+     */
+    private void loadMovies(boolean forceUpdate, boolean showLoadingUi) {
+        if (showLoadingUi) {
+            mMoviesView.setLoadingIndicator(true);
+        }
+        if (forceUpdate) {
+            mMoviesRepository.refreshMovies();
+        }
+    }
+
 
     @Override
     public void openMoviesDetails(@NonNull Movie requestedMovie) {

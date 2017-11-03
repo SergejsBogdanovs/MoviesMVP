@@ -46,19 +46,16 @@ dependencies {
 
     implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofitVersion"
     implementation "com.squareup.retrofit2:converter-gson:$rootProject.retrofitVersion"
+    implementation "com.squareup.okhttp3:okhttp:$rootProject.okhttpVersion"
+    implementation "com.squareup.picasso:picasso:$rootProject.picassoVersion"
 
     implementation "com.jakewharton:butterknife:$rootProject.butterKnifeVersion"
     annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.butterKnifeVersion"
 
-    implementation "com.squareup.okhttp3:okhttp:$rootProject.okhttpVersion"
-
-    implementation "com.squareup.picasso:picasso:$rootProject.picassoVersion"
-
-
     // Dependencies for local unit tests
-    androidTestImplementation "junit:junit:$rootProject.ext.junitVersion"
-    androidTestImplementation "org.mockito:mockito-android:$rootProject.ext.mockitoVersion"
-    androidTestImplementation "org.hamcrest:hamcrest-all:$rootProject.ext.hamcrestVersion"
+    testCompile "junit:junit:$rootProject.ext.junitVersion"
+    testCompile "org.mockito:mockito-android:$rootProject.ext.mockitoVersion"
+    testCompile "org.hamcrest:hamcrest-all:$rootProject.ext.hamcrestVersion"
 
     // Android Testing Support Library's runner and rules
     androidTestCompile "com.android.support.test:runner:$rootProject.ext.runnerVersion"

@@ -77,7 +77,6 @@ public class MoviesRepository implements MoviesDataSource {
         }
     }
 
-
     @Override
     public void refreshMovies() {
         mCacheIsDirty = true;

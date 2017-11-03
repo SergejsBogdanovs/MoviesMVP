@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -74,15 +75,21 @@ public class MoviesFragment extends Fragment implements MoviesContract.View {
         ButterKnife.bind(this, root);
 
         // Set up movies view
+        mRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 3));
         mRecyclerView.setAdapter(mMoviesAdapter);
-        mRecyclerView.setLayoutManager(new GridLayoutManager());
 
         return root;
     }
 
     @Override
-    public void setLoadingIndicator(boolean active) {
+    public void setLoadingIndicator(final boolean active) {
+        if (getView() == null) {
+            return;
+        }
 
+        // Make sure setRefreshing() is called the layout is done with everything else.
+        final SwipeRefreshLayout srl = getView().findViewById(R.id.refresh_layout);
+        srl.post(() -> srl.setRefreshing(active));
     }
 
     @Override
