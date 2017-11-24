@@ -5,4 +5,7 @@
     <string name="statistics_title">Top Rated Movies</string>
     <string name="no_movies_text">Cannot load movies! Check internet connection</string>
     <string name="no_movies_icon_cd">No movies icon</string>
+    <string name="refresh">Refresh</string>
+    <string name="popular_label">Popular</string>
+    <string name="top_rated_label">Top Rated</string>
 </resources>

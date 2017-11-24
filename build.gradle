@@ -7,7 +7,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.0.0'
+        classpath 'com.android.tools.build:gradle:3.0.1'
         
 
         // NOTE: Do not place your application dependencies here; they belong
@@ -32,10 +32,10 @@ ext {
     minSdkVersion = 15
     targetSdkVersion = 27
     compileSdkVersion = 27
-    buildToolsVersion = '27.0.0'
+    buildToolsVersion = '27.0.1'
 
     // App dependencies
-    supportLibraryVersion = '27.0.0'
+    supportLibraryVersion = '27.0.1'
     guavaVersion = '23.3-android'
     junitVersion = '4.12'
     mockitoVersion = '2.11.0'

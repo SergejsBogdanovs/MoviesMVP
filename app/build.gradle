@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 27
+    buildToolsVersion "27.0.1"
     defaultConfig {
         applicationId "lv.st.sbogdano.popularmoviesmvp"
         minSdkVersion 15
@@ -9,6 +10,11 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        buildConfigField "String", "API_ENDPOINT", '"https://api.themoviedb.org/3/"'
+        buildConfigField "String", "API_KEY", '"ec37c7f4a198ea5f17aa1db00536041c"'
+        buildConfigField "String", "IMAGES_BASE_URL", '"https://image.tmdb.org/t/p/"'
+
     }
     buildTypes {
         release {

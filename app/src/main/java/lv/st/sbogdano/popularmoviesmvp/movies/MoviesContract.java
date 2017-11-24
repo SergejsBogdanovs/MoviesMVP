@@ -24,6 +24,10 @@ public interface MoviesContract {
         void showLoadingMoviesError();
 
         void showNoMovies();
+
+        void showPopularSortingLabel();
+
+        void showTopRatedSortingLabel();
     }
 
     interface Presenter extends BasePresenter {

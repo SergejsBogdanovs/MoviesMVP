@@ -1,6 +1,7 @@
 
 package lv.st.sbogdano.popularmoviesmvp.model.data;
 
+import java.util.ArrayList;
 import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -10,15 +11,18 @@ public class Result {
     @SerializedName("page")
     @Expose
     private Long page;
+
     @SerializedName("total_results")
     @Expose
     private Long totalResults;
+
     @SerializedName("total_pages")
     @Expose
     private Long totalPages;
+
     @SerializedName("results")
     @Expose
-    private List<Movie> results = null;
+    private List<Movie> results;
 
     public Long getPage() {
         return page;
@@ -45,6 +49,9 @@ public class Result {
     }
 
     public List<Movie> getResults() {
+        if (results == null) {
+            return new ArrayList<>();
+        }
         return results;
     }
 
